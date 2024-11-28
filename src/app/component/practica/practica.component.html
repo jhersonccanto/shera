@@ -1,0 +1,88 @@
+<div style="display: flex; height: 100vh;">
+  <!-- Main Content with Table -->
+  <div style="flex-grow: 1; padding: 1px;">
+    <!-- input de buscar solicitud -->
+    <div style="display: flex; align-items: center;">
+      <!-- Contenedor del input con ícono -->
+      <div style="position: relative; width: 300px;">
+        <!-- Ícono de búsqueda -->
+        <i class="pi pi-search" style="position: absolute; left: 10px; top: 50%; transform: translateY(-50%); color: #999;"></i>
+    
+        <!-- Input de texto con sombra y padding extra a la izquierda -->
+        <input type="text" pInputText [(ngModel)]="value" placeholder="Buscar por código" 
+               style="padding: 8px 8px 8px 50px; width: 100%; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); border-radius: 5px;" />
+      </div>
+    
+      <!-- Botón con margen izquierdo de 20px y ícono naranja -->
+      <p-button [text]="true" [raised]="true" [plain]="true" label="Filtro" icon="pi pi-filter-fill"
+                [ngStyle]="{ 'margin-left': '20px', 'padding': '10px', 'width': '100px' }"
+                class="custom-icon-color" (click)="buscarPorCodigo()">
+      </p-button>
+    </div>
+
+    <table style="width: 100%; margin-top: 30px; border-collapse: collapse;" class="custom-table">
+      <thead>
+        <tr style="background-color: #f4a261; color: white;">
+          <th style="padding: 5px;">Nº</th>
+          <th style="padding: 5px;">Practicante</th>
+          <th style="padding: 5px;">Codigo</th>
+          <th style="padding: 1px;">Empresa</th>
+          <th style="padding: 1px;">Linea</th>
+          <th style="padding: 1px;">Plan</th>
+          <th style="padding: 1px;">Supervisor</th>
+          <th style="padding: 5px;">Inicio</th>
+          <th style="padding: 5px;">Fin</th>
+          <th style="padding: 1px;">Horas</th>
+          <th style="padding: 1px;">Nota Acad</th>
+          <th style="padding: 1px;">Nota Emp</th>
+          <th style="padding: 1px;">Nota Fin</th>
+          <th style="padding: 1px;">Estado</th>
+          <th style="padding: 1px;">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let practica of practicas" style="text-align: center;">
+          <td style="padding: 10px;">{{ practica.idPractica }}</td> 
+          <td style="padding: 10px;">{{ practica.nombrePersona + ' ' + practica.apellidoPersona }}</td>
+
+          <td style="padding: 10px;">{{ practica.codigoPersona }}</td> <!-- Fecha por defecto -->
+          <td style="padding: 10px;">{{ practica.nombreEmpresa }}</td>
+          <td style="padding: 10px;">{{ practica.nombreLinea }}</td>
+          <td style="padding: 10px;">{{ practica.planPlan + ':' +practica.nombreCarrera }}</td>
+          
+          <td style="padding: 10px;">{{ practica.tipoSupervisor }}</td>
+          <td style="padding: 10px;">{{ practica.fechaInicioPractica }}</td>
+          <td style="padding: 10px;">{{ practica.fechaFinPractica }}</td>
+          <td style="padding: 10px;">{{ practica.horasPlanPractica }}</td>
+          <td style="padding: 10px;">{{ practica.notaAcademicaPractica }}</td>
+          <td style="padding: 10px;">{{ practica.notaEmpresarialPractica }}</td>
+          <td style="padding: 10px;">{{ practica.ponderadoFinalPractica }}</td> 
+          <td style="padding: 10px; text-align: center;">
+            <i *ngIf="practica.estadoEstado === 'Aprobado'" 
+               class="pi pi-check-circle estado-aprobado" 
+               title="Aprobado">
+            </i>
+            <i *ngIf="practica.estadoEstado === 'Desaprobado'" 
+               class="pi pi-times-circle estado-desaprobado" 
+               title="Desaprobado">
+            </i>
+            <i *ngIf="practica.estadoEstado === 'Pendiente'" 
+               class="pi pi-clock estado-pendiente" 
+               title="Pendiente">
+            </i>
+          </td>
+          
+          <td style="padding: 10px; text-align: center;">
+            <p-button (click)="verDetalle(practica.idPractica)" class="btn btn-link icono-ojo" title="Ver Detalle" [rounded]="true" [text]="true" >
+              <i class="pi pi-eye"></i>
+            </p-button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<app-practica-detalle *ngIf="mostrarDetalle"
+[id]="idSeleccionado"
+(close)="cerrarModal()" (estadoActualizado)="loadPractices()"></app-practica-detalle>

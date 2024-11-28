@@ -1,0 +1,79 @@
+.documentacion-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  h1 {
+    text-align: center;
+    color: #002d72;
+    margin-bottom: 20px;
+  }
+  
+  .filter-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .search-bar {
+    width: 300px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+  }
+  
+  .custom-table {
+    margin-top: 20px;
+  }
+  
+  .nombre-section {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .email {
+    font-size: 0.9rem;
+    color: #888;
+  }
+  
+  .documentacion-links {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .pdf-icon {
+    color: red;
+    margin-right: 5px;
+  }
+  
+  .link {
+    color: #0078d4;
+    text-decoration: none;
+    font-size: 0.9rem;
+  }
+  
+  .estado {
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 4px;
+    text-align: center;
+  }
+  
+  .estado.aprobado {
+    background-color: #d4edda;
+    color: #155724;
+  }
+  
+  .estado.pendiente {
+    background-color: #fff3cd;
+    color: #856404;
+  }
+  
+  .estado.rechazado {
+    background-color: #f8d7da;
+    color: #721c24;
+  }
+  

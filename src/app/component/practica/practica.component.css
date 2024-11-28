@@ -1,0 +1,56 @@
+::ng-deep .custom-icon-color .pi-filter-fill {
+    color: orange; /* Cambia el color del ícono a naranja */
+  }
+
+ 
+
+
+/* Alternar colores de las filas del cuerpo para mejor visibilidad */
+.custom-table tbody tr:nth-child(odd) {
+  background-color: #ffffff;
+}
+
+.custom-table tbody tr:nth-child(even) {
+  background-color: #f0eded;
+}
+
+/* Tamaño más grande para encabezados */
+.custom-table thead th {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+/* Tamaño más pequeño para los datos */
+.custom-table tbody td {
+  font-size: 10.5px;
+}
+
+/* Icono para el estado Aprobado */
+.estado-aprobado {
+  color: green; /* Verde para aprobado */
+  font-size: 1.5em; /* Tamaño del ícono */
+}
+
+/* Icono para el estado Desaprobado */
+.estado-desaprobado {
+  color: red; /* Rojo para desaprobado */
+  font-size: 1.5em;
+}
+
+/* Icono para el estado Pendiente */
+.estado-pendiente {
+  color: orange; /* Naranja para pendiente */
+  font-size: 1.5em;
+}
+
+/* Ícono del ojo */
+.icono-ojo i {
+  color: #00bfff; /* Color celeste */
+  font-size: 1.5em; /* Tamaño del ícono */
+  transition: transform 0.2s, color 0.2s; /* Transiciones para animaciones */
+}
+
+.icono-ojo i:hover {
+  color: #007acc; /* Color más oscuro al pasar el mouse */
+  transform: scale(1.2); /* Aumenta ligeramente el tamaño */
+}

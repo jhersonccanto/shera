@@ -1,0 +1,101 @@
+<div class="modal-background" (click)="cerrarPractica()">
+  <div class="modal-container" (click)="$event.stopPropagation()">
+    <h2>{{ titulos }}</h2>
+
+    <div class="modal-content">
+      <!-- Datos de la Empresa -->
+      <section class="section">
+        <p class="section-title">Datos de la Practica</p>
+        <div class="row">
+          <div class="column">
+            <label for="practica">Empresa:</label>
+            <p-dropdown
+              
+              optionLabel="nombre"
+              placeholder="Seleccione Empresa"
+              formControlName="empresa"
+            ></p-dropdown>
+          </div>
+          <div class="column">
+            <label for="linea">Línea:</label>
+            <p-dropdown
+              
+              optionLabel="nombre"
+              placeholder="Seleccione Línea"
+              formControlName="linea"
+            ></p-dropdown>
+          </div>
+        </div>
+      </section>
+
+      <!-- Fechas -->
+      <section class="section">
+        <p class="section-title">Fechas</p>
+        <div class="row">
+          <div class="column">
+            <label for="fecha_inicio">Fecha Inicio:</label>
+            <input
+              type="date"
+              
+              class="form-control"
+              formControlName="fecha_inicio"
+              disabled
+            />
+          </div>
+          <div class="column">
+            <label for="fecha_fin">Fecha Fin:</label>
+            <input
+              type="date"
+              
+              class="form-control"
+              formControlName="fecha_fin"
+              disabled
+            />
+          </div>
+        </div>
+      </section>
+
+      <!-- Horas y Notas -->
+      <section class="section">
+        <p class="section-title">Horas y Notas</p>
+        <div class="row">
+          <div class="column">
+            <label for="horas_plan">Horas Planificadas:</label>
+            <input
+              type="number"
+              
+              class="form-control"
+              formControlName="horas_plan"
+              disabled
+            />
+          </div>
+          <div class="column">
+            <label for="nota_academica">Nota Académica:</label>
+            <input
+              type="number"
+              
+              class="form-control"
+              formControlName="nota_academica"
+              disabled
+            />
+          </div>
+        </div>
+      </section>
+
+      <!-- Botones -->
+      <div class="row buttons">
+        <p-button
+          label="Cancelar"
+          icon="pi pi-times"
+          severity="secondary"
+          (click)="cerrarPractica()"
+        ></p-button>
+        <p-button
+          label="Guardar"
+          icon="pi pi-check"
+          (click)="guardarPractica()"
+        ></p-button>
+      </div>
+    </div>
+  </div>
+</div>

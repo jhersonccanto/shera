@@ -1,0 +1,85 @@
+.solicitudes-container {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #4a4a4a;
+  }
+  
+  .toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .search-bar {
+    width: 300px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .solicitudes-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .solicitudes-table th,
+  .solicitudes-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .solicitudes-table th {
+    background-color: #6f42c1;
+    color: white;
+    font-weight: bold;
+  }
+  
+  .solicitudes-table tbody tr:hover {
+    background-color: #f9f9f9;
+  }
+  
+  .pdf-button {
+    background-color: #d32f2f !important;
+    color: white !important;
+    border: none;
+  }
+  
+  .download-button {
+    background-color: #4caf50 !important;
+    color: white !important;
+    border: none;
+    margin-left: 10px;
+  }
+  
+  .email {
+    font-size: 0.9em;
+    color: #888;
+  }
+  
+  .status {
+    padding: 5px 10px;
+    border-radius: 4px;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  .status.aprobado {
+    background-color: #4caf50;
+  }
+  
+  .status.pendiente {
+    background-color: #ff9800;
+  }
+  
+  .status.rechazado {
+    background-color: #f44336;
+  }
+  

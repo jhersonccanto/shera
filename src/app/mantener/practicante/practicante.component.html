@@ -1,0 +1,206 @@
+<div class="grid">
+    <div class="col-12">
+        <div class="card px-6 py-6">
+            <p-toast></p-toast>
+            <p-table #dt [value]="practicantes" [paginator]="true" [rows]="5" [tableStyle]="{ 'min-width': '3rem' }"
+                [rowsPerPageOptions]="[5, 10, 20]" [globalFilterFields]="['codigo', 'persona.nombre', 'persona.apellido', 'persona.dni', 'persona.correo', 'persona.telefono', 'persona.pais', 'persona.religion', 'estado', 'ciclo', 'grupo', 'correo_institucional']"
+                responsiveLayout="scroll" [selection]="selectedPracticante" selectionMode="multiple" [(selection)]="selectedPracticante" dataKey="id" (selectionChange)="onSelectionChange()">
+                <ng-template pTemplate="caption">
+                    <div class="flex flex-column md:flex-row md:justify-content-between md:align-items-center gap-3">
+                        <div class="flex flex-wrap gap-2">
+                            <p-splitButton label="Nuevo" icon="pi pi-plus" class="p-button-success" (onClick)="showDialogCreate()" [model]="menuItems" severity="success"></p-splitButton>
+                            <button pButton pRipple label="Eliminar" icon="pi pi-trash" class="p-button-danger" (click)="deleteSelectedPracticantes()" [disabled]="!selectedPracticante || selectedPracticante.length === 0"></button>
+                        </div>
+                        <h5 class="text-center">Personas</h5>
+                        <div class="flex align-items-center">
+                            <span class="p-input-icon-left">
+                                <i class="pi pi-search"></i>
+                                <input pInputText type="text" (input)="onGlobalFilter(dt, $event)" placeholder="Buscar..." 
+                                    class="w-full sm:w-auto" />
+                            </span>
+                        </div>
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th style="width: 3rem">
+                            <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                        </th>
+                        <th pSortableColumn="persona.nombre">Nombre <p-sortIcon field="persona.nombre"></p-sortIcon></th>
+<th pSortableColumn="persona.apellido">Apellido <p-sortIcon field="persona.apellido"></p-sortIcon></th>
+<th pSortableColumn="persona.dni">DNI <p-sortIcon field="persona.dni"></p-sortIcon></th>
+<th pSortableColumn="persona.email">Email <p-sortIcon field="persona.email"></p-sortIcon></th>
+<th pSortableColumn="persona.telefono">Teléfono <p-sortIcon field="persona.telefono"></p-sortIcon></th>
+<th pSortableColumn="persona.pais">País <p-sortIcon field="persona.pais"></p-sortIcon></th>
+<th pSortableColumn="persona.religion">Religión <p-sortIcon field="persona.religion"></p-sortIcon></th>
+<th pSortableColumn="persona.estado">Estado <p-sortIcon field="persona.estado"></p-sortIcon></th>
+<th pSortableColumn="persona.codigo">Código <p-sortIcon field="persona.codigo"></p-sortIcon></th>
+<th pSortableColumn="practicante.ciclo">Ciclo <p-sortIcon field="practicante.ciclo"></p-sortIcon></th>
+<th pSortableColumn="practicante.grupo">Grupo <p-sortIcon field="practicante.grupo"></p-sortIcon></th>
+<th pSortableColumn="practicante.correo_institucional">Correo Institucional <p-sortIcon field="practicante.correo_institucional"></p-sortIcon></th>
+<th pSortableColumn="practicante.horas_acumuladas">Horas Acumuladas <p-sortIcon field="practicante.horas_acumuladas"></p-sortIcon></th>
+<th pSortableColumn="practicante.horas_ps">Horas PS <p-sortIcon field="practicante.horas_ps"></p-sortIcon></th>
+<th pSortableColumn="practicante.plancarrera">Plan Carrera <p-sortIcon field="practicante.plancarrera"></p-sortIcon></th>
+<th>Acción</th>
+
+                    </tr>
+                </ng-template>
+
+                <ng-template pTemplate="body" let-practicante>
+                    <tr>
+                        <td>
+                            <p-tableCheckbox [value]="practicante"></p-tableCheckbox>
+                        </td>
+                        <td>
+                            <span class="p-column-title">ID</span>
+                            {{ practicante.id_practicante }}
+                        </td>
+                        <td>
+                            <span class="p-column-title">Código</span>
+                            {{ practicante.persona.codigo }}
+                        </td>
+                        <td>
+                            <span class="p-column-title">Ciclo</span>
+                            {{ practicante.practicante.ciclo }}
+                        </td>
+                        <td>
+                            <span class="p-column-title">Grupo</span>
+                            {{ practicante.practicante.grupo }}
+                        </td>
+                        <td>
+                            <span class="p-column-title">Correo Institucional</span>
+                            {{ practicante.practicante.correo_institucional }}
+                        </td>
+                        <td>
+                            <span class="p-column-title">Nombre</span>
+                            {{ practicante.persona.nombre }}
+                        </td>
+                        <td>
+                            <span class="p-column-title">Apellido</span>
+                            {{ practicante.persona.apellido }}
+                        </td>
+                        <td>
+                            <span class="p-column-title">DNI</span>
+                            {{ practicante.persona.dni }}
+                        </td>
+                        <td>
+                            <span class="p-column-title">Correo</span>
+                            {{ practicante.persona.email }}
+                        </td>
+                        <td>
+                            <span class="p-column-title">Teléfono</span>
+                            {{ practicante.persona.telefono }}
+                        </td>
+                        <td>
+                            <span class="p-column-title">País</span>
+                            {{ practicante.persona.pais }}
+                        </td>
+                        <td>
+                            <span class="p-column-title">Religión</span>
+                            {{ practicante.persona.religion }}
+                        </td>
+                        <td>
+                            <span class="p-column-title">Estado</span>
+                            {{ practicante.persona.estado }}
+                        </td>
+                        <td>
+                            <span class="p-column-title">Horas Acumuladas</span>
+                            {{ practicante.practicante.horas_acumuladas }}
+                        </td>
+                        <td>
+                            <span class="p-column-title">Horas PS</span>
+                            {{ practicante.practicante.horas_ps }}
+                        </td>
+                        <td>
+                            <span class="p-column-title">Plan Carrera</span>
+                            {{ practicante.practicante.plancarrera }}
+                        </td>
+                        <td>
+                            <div class="flex">
+                                <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-warning mr-2" (click)="showDialogEdit(practicante.id_practicante)"></button>
+                                <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger" (click)="showDialogDelete(practicante)"></button>
+                            </div>
+                        </td>
+                    </tr>
+                </ng-template>
+                
+            </p-table>          
+        </div>
+    </div>
+</div>
+
+<p-dialog header="{{titulo}}" [modal]="true" [(visible)]="visible" [style]="{ width: '25rem' }">
+    <div class="p-fluid">
+        <!-- Campo Código -->
+        <div class="p-field">
+            <label for="codigo">Código</label>
+            <input id="codigo" type="text" pInputText [(ngModel)]="practicante.persona.codigo" required />
+        </div>
+
+        <!-- Campo Ciclo -->
+        <div class="p-field">
+            <label for="ciclo">Ciclo</label>
+            <input id="ciclo" type="text" pInputText [(ngModel)]="practicante.ciclo" required />
+        </div>
+
+        <!-- Campo Grupo -->
+        <div class="p-field">
+            <label for="grupo">Grupo</label>
+            <input id="grupo" type="text" pInputText [(ngModel)]="practicante.grupo" required />
+        </div>
+
+        <!-- Campo Nombre -->
+        <div class="p-field">
+            <label for="nombre">Nombre</label>
+            <input id="nombre" type="text" pInputText [(ngModel)]="practicante.persona.nombre" required />
+        </div>
+
+        <!-- Campo Apellido -->
+        <div class="p-field">
+            <label for="apellido">Apellido</label>
+            <input id="apellido" type="text" pInputText [(ngModel)]="practicante.persona.apellido" required />
+        </div>
+
+        <!-- Campo DNI -->
+        <div class="p-field">
+            <label for="dni">DNI</label>
+            <input id="dni" type="text" pInputText [(ngModel)]="practicante.persona.dni" required />
+        </div>
+
+        <!-- Campo Correo -->
+        <div class="p-field">
+            <label for="correo">Correo</label>
+            <input id="correo" type="email" pInputText [(ngModel)]="practicante.persona.email" required />
+        </div>
+
+        <!-- Campo Teléfono -->
+        <div class="p-field">
+            <label for="telefono">Teléfono</label>
+            <input id="telefono" type="text" pInputText [(ngModel)]="practicante.persona.telefono" required />
+        </div>
+
+        <!-- Campo País -->
+        <div class="p-field">
+            <label for="pais">País</label>
+            <input id="pais" type="text" pInputText [(ngModel)]="practicante.persona.pais" required />
+        </div>
+
+        <!-- Campo Religión -->
+        <div class="p-field">
+            <label for="religion">Religión</label>
+            <input id="religion" type="text" pInputText [(ngModel)]="practicante.persona.religion" required />
+        </div>
+
+        <!-- Campo Estado -->
+        <div class="p-field">
+            <label for="estado">Estado</label>
+            <input id="estado" type="text" pInputText [(ngModel)]="practicante.persona.estado" required />
+        </div>
+    </div>
+
+    <p-footer>
+        <button pButton icon="pi pi-times" label="Cancelar" (click)="limpiar()"></button>
+        <button pButton icon="pi pi-check" label="{{opc}}" (click)="opcion()"></button>
+    </p-footer>
+</p-dialog>
+

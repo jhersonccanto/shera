@@ -1,0 +1,84 @@
+<div class="container">
+  <div class="button-container">
+    <button
+      pButton
+      pRipple
+      type="button"
+      icon="pi pi-building"
+      class="btn-register"
+      (click)="abrirFormularioEmpresa()"
+      label="Registrar nueva Empresa"
+    ></button>
+
+    <button
+      pButton
+      pRipple
+      type="button"
+      icon="pi pi-plus"
+      class="btn-create"
+      (click)="abrirFormularioPractica()"
+      label="Crear Práctica"
+    ></button>
+  </div>
+  <app-practica-forms
+  *ngIf="isPracticaFormVisible"
+  [modalVisible]="isPracticaFormVisible"
+  (closeModal)="cerrarFormularioPractica()"
+></app-practica-forms>
+
+  <table class="styled-table">
+    <thead>
+      <tr>
+        <th>N°</th>
+        <th>Empresa</th>
+        <th>Línea</th>
+        <th>Plan Carrera</th>
+        <th>Fecha Inicio</th>
+        <th>Fecha Fin</th>
+        <th>Supervisor</th>
+        <th>Horas Plan</th>
+        <th>Nota Académica</th>
+        <th>Nota Empresarial</th>
+        <th>Ponderado Final</th>
+        <th>Estado</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let practica of practicas; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>
+          
+        </td>
+        <td>
+          <button
+            pButton
+            pRipple
+            type="button"
+            icon="pi pi-pencil"
+            class="p-button-rounded p-button-success"
+            (click)="editarPractica(practica)"
+          ></button>
+          <button
+            pButton
+            pRipple
+            type="button"
+            icon="pi pi-trash"
+            class="p-button-rounded p-button-danger"
+            
+          ></button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

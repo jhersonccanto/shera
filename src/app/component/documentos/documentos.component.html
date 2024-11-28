@@ -1,0 +1,78 @@
+<div class="documentacion-container">
+  <h1>Registrar Documentos</h1>
+
+  <h2>Documentación</h2>
+  <p-table
+    [value]="documentos"
+    [responsiveLayout]="'scroll'"
+    class="custom-table"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th>N°</th>
+        <th>Nombre</th>
+        <th>Fecha</th>
+        <th>Subir</th>
+        <th>Planilla</th>
+        <th>Estado</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-documento>
+      <tr>
+        <td>{{ documento.id }}</td>
+        <td>{{ documento.nombre }}</td>
+        <td>{{ documento.fecha }}</td>
+        <td>
+          <button
+            pButton
+            type="button"
+            label="Subir"
+            class="upload-btn"
+            (click)="uploadFile(documento)"
+          ></button>
+          <input
+            type="file"
+            #fileInput
+            hidden
+            (change)="onFileSelected($event, documento)"
+          />
+        </td>
+        <td>
+          <a href="#" class="download-link">Visualizar archivo</a>
+        </td>
+        <td>
+          <span
+            class="estado"
+            [ngClass]="{
+              aprobado: documento.estado === 'Aprobado',
+              pendiente: documento.estado === 'Pendiente',
+              rechazado: documento.estado === 'Rechazado'
+            }"
+          >
+            {{ documento.estado }}
+          </span>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+
+  <h2>Supervisor Empresarial</h2>
+  <div class="supervisor-form">
+    <div class="field-group">
+      <label for="nombre">Nombre</label>
+      <input id="nombre" type="text" [(ngModel)]="supervisor.nombre" placeholder="Ingrese el nombre del supervisor" />
+    </div>
+    <div class="field-group">
+      <label for="email">Correo electrónico</label>
+      <input id="email" type="email" [(ngModel)]="supervisor.email" placeholder="ejemplo@gmail.com" />
+    </div>
+    <div class="field-group">
+      <label for="telefono">Teléfono</label>
+      <input id="telefono" type="text" [(ngModel)]="supervisor.telefono" placeholder="000-000-000" />
+    </div>
+  </div>
+
+  <div class="form-footer">
+    <button pButton type="button" label="Guardar y enviar" class="save-btn" (click)="saveDocuments()"></button>
+  </div>
+</div>

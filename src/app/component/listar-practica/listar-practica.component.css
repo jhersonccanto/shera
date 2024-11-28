@@ -1,0 +1,54 @@
+.container {
+  width: 90%;
+  margin: 20px auto;
+}
+
+.button-container {
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.btn-register {
+  background-color: #28a745;
+  color: white;
+}
+
+.btn-create {
+  background-color: #ff9800;
+  color: white;
+}
+
+.styled-table {
+  width: 100%;
+  border-collapse: collapse;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.styled-table th {
+  background-color: orange;
+  color: white;
+  text-align: center;
+  padding: 10px;
+}
+
+.styled-table td {
+  text-align: center;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.styled-table tr:hover {
+  background-color: #f1f1f1;
+}
+
+.styled-table .aprobado {
+  color: green;
+  font-weight: bold;
+}
+
+.styled-table .pendiente {
+  color: orange;
+  font-weight: bold;
+}

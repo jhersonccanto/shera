@@ -1,0 +1,66 @@
+<div class="documentacion-container">
+    <h1>Documentación</h1>
+  
+    <div class="filter-section">
+      <input
+        type="text"
+        [(ngModel)]="searchQuery"
+        (input)="filterDocumentos()"
+        placeholder="Buscar solicitud"
+        class="search-bar"
+      />
+      <button pButton type="button" icon="pi pi-filter" label="Filtro" (click)="toggleFilter()"></button>
+    </div>
+  
+    <p-table
+      [value]="documentos"
+      [responsiveLayout]="'scroll'"
+      class="custom-table"
+    >
+      <ng-template pTemplate="header">
+        <tr>
+          <th>N°</th>
+          <th>Nombre</th>
+          <th>Fecha</th>
+          <th>Código</th>
+          <th>Sup. Empresa</th>
+          <th>Documentación</th>
+          <th>Estado</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-documento>
+        <tr>
+          <td>{{ documento.numero }}</td>
+          <td>
+            <div class="nombre-section">
+              <div>{{ documento.nombre }}</div>
+              <div class="email">{{ documento.email }}</div>
+            </div>
+          </td>
+          <td>{{ documento.fecha }}</td>
+          <td>{{ documento.codigo }}</td>
+          <td>{{ documento.supervisor }}</td>
+          <td>
+            <div class="documentacion-links">
+              <i class="pi pi-file-pdf pdf-icon"></i>
+              <a href="#" class="link">Visualizar archivo</a>
+              <a href="#" class="link">Descargar archivo</a>
+            </div>
+          </td>
+          <td>
+            <span
+              class="estado"
+              [ngClass]="{
+                aprobado: documento.estado === 'Aprobado',
+                pendiente: documento.estado === 'Pendiente',
+                rechazado: documento.estado === 'Rechazado'
+              }"
+            >
+              {{ documento.estado }}
+            </span>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+  

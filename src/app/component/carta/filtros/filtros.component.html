@@ -1,0 +1,26 @@
+<div class="solicitudes-container">
+    <!-- Barra de herramientas -->
+    <div class="toolbar">
+      <input
+        type="text"
+        placeholder="Buscar solicitud"
+        class="search-bar"
+        [(ngModel)]="searchQuery"
+        (input)="filterSolicitudes()"
+      />
+      <p-menu #menu [popup]="true" [model]="filtros"></p-menu>
+      <button
+        pButton
+        type="button"
+        icon="pi pi-filter"
+        label="Filtro"
+        (click)="menu.toggle($event)"
+      ></button>
+    </div>
+  
+    <!-- Tabla -->
+    <table class="solicitudes-table">
+      <!-- (Misma tabla que antes) -->
+    </table>
+  </div>
+  

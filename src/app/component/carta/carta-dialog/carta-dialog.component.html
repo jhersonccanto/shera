@@ -1,0 +1,55 @@
+<p-dialog
+  header="Carta de presentación"
+  [(visible)]="displayCartaDialog"
+  [modal]="true"
+  [responsive]="true"
+  [style]="{ width: '50vw' }"
+  [closable]="true"
+>
+  <div class="dialog-content">
+    <!-- Planilla -->
+    <div class="flex flex-row align-items-center justify-content-between mb-3">
+      <div class="card planilla-card">
+        <div class="planilla-header">
+          <i class="pi pi-file-word"></i>
+          <span>Planilla</span>
+        </div>
+        <div class="planilla-body">
+          <a href="url_to_download_file" class="download-link">Descargar archivo</a>
+        </div>
+      </div>
+
+      <!-- Subir carta -->
+      <div class="flex flex-column align-items-center">
+        <button pButton type="button" label="Subir Carta de Presentación" class="upload-btn" (click)="uploadFile()"></button>
+        <input type="file" #fileInput hidden (change)="onFileSelected($event)" />
+      </div>
+    </div>
+
+    <!-- Practicante y Empresa -->
+    <div class="flex flex-row gap-3">
+      <!-- Practicante -->
+      <div class="card info-card">
+        <h4>Practicante</h4>
+        <div><strong>Nombre:</strong> {{ practicante.nombre }}</div>
+        <div><strong>DNI:</strong> {{ practicante.dni }}</div>
+        <div><strong>Código:</strong> {{ practicante.codigo }}</div>
+        <div><strong>Correo:</strong> {{ practicante.correo }}</div>
+      </div>
+
+      <!-- Empresa -->
+      <div class="card info-card">
+        <h4>Empresa</h4>
+        <div><strong>Nombre:</strong> {{ empresa.nombre }}</div>
+        <div><strong>RUC:</strong> {{ empresa.ruc }}</div>
+        <div><strong>Representante legal:</strong> {{ empresa.representante }}</div>
+        <div><strong>Correo:</strong> {{ empresa.correo }}</div>
+        <div><strong>Dirección:</strong> {{ empresa.direccion }}</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="dialog-footer">
+    <button pButton type="button" label="Guardar y enviar" class="save-btn" (click)="saveAndSubmit()"></button>
+  </div>
+</p-dialog>

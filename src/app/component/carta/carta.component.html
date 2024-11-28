@@ -1,0 +1,62 @@
+<div class="solicitudes-container">
+    <h2>Solicitudes</h2>
+    <app-filtros></app-filtros>
+    <!-- Tabla de solicitudes -->
+    <table class="solicitudes-table">
+      <thead>
+        <tr>
+          <th>N°</th>
+          <th>Practicante</th>
+          <th>Fecha</th>
+          <th>Código</th>
+          <th>Empresa</th>
+          <th>Documentación</th>
+          <th>Estado</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *NgFor="let solicitud of filteredSolicitudes; let i = index">
+          <td>{{ i + 1 | number: '3.0' }}</td>
+          <td>
+            {{ solicitud.practicante }}<br />
+            <span class="email">{{ solicitud.email }}</span>
+          </td>
+          <td>{{ solicitud.fecha }}</td>
+          <td>{{ solicitud.codigo }}</td>
+          <td>{{ solicitud.empresa }}</td>
+          <td>
+            <button
+              pButton
+              class="pdf-button"
+              type="button"
+              icon="pi pi-file-pdf"
+              label="Visualizar archivo"
+              (click)="visualizarArchivo(solicitud.documento)"
+            ></button>
+            <button
+              pButton
+              class="download-button"
+              type="button"
+              icon="pi pi-download"
+              label="Descargar archivo"
+              (click)="descargarArchivo(solicitud.documento)"
+            ></button>
+          </td>
+          <td>
+            <span
+              class="status"
+              [ngClass]="{
+                aprobado: solicitud.estado === 'Aprobado',
+                pendiente: solicitud.estado === 'Pendiente',
+                rechazado: solicitud.estado === 'Rechazado'
+              }"
+            >
+              {{ solicitud.estado }}
+            </span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+ <app-carta-dialog ></app-carta-dialog>
